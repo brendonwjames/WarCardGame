@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Tabletop from "./Tabletop";
 
-const NewGame = () => {
+const GameLogic = () => {
     const dispatch = useDispatch();
     const player1 = useSelector(state => state.session.user);
-
 
     const [player1Cards, setPlayer1Cards] = useState([]);
     const [player2Cards, setPlayer2Cards] = useState([]);
     const [activeGame, setActiveGame] = useState(false);
     const [cardsToWin, setCardsToWin] = useState([]);
+    const [currentCard1, setCurrentCard1] = useState();
+    const [currentCard2, setCurrentCard2] = useState();
+    const [player1CardInfo, setPlayer1CardInfo] = useState('C4');
+    const [player2CardInfo, setPlayer2CardInfo] = useState('D1');
+
 
     const deck = [
         'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14',
@@ -30,7 +35,7 @@ const NewGame = () => {
         if (player1Cards.length === 52) {
             alert('Player 1 has won the game!');
             setActiveGame(false);
-        }
+        };
         if (player2Cards.length === 52) {
             alert('Player 2 has won the game!');
             setActiveGame(false);
@@ -75,8 +80,11 @@ const NewGame = () => {
         console.log('NUMBER 1:', parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
         console.log('NUMBER 2:', parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
 
-        let currentCard1 = parseInt(cardsToWin[cardsToWin.length - 2].slice(1));
-        let currentCard2 = parseInt(cardsToWin[cardsToWin.length - 1].slice(1));
+        setCurrentCard1(parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
+        setCurrentCard2(parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
+
+        setPlayer1CardInfo(cardsToWin[cardsToWin.length - 2]);
+        setPlayer2CardInfo(cardsToWin[cardsToWin.length - 1]);
 
         if (currentCard1 === currentCard2) {
             alert('WAR!!');
@@ -113,10 +121,14 @@ const NewGame = () => {
     return (
         <>
             {!activeGame && <button onClick={() => shuffle(deck)}>New Game</button>}
-            {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
+            {activeGame && 
+                <div>
+                    <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>
+                    <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo }} />
+                </div>}
         </>
     )
 
 }
 
-export default NewGame;
+export default GameLogic;
