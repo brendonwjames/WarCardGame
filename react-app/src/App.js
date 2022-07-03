@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import GameLogic from './components/GameLogic';
+import Game from './components/Game';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <GameLogic />
+          <Game />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

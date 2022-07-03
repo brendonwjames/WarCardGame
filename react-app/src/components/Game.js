@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Tabletop from "./Tabletop";
 import cardIdentifier from "./CardIdentifier";
 
-const GameLogic = () => {
+const Game = () => {
     const dispatch = useDispatch();
     const player1 = useSelector(state => state.session.user);
 
@@ -12,8 +12,9 @@ const GameLogic = () => {
     const [player2Cards, setPlayer2Cards] = useState([]);
     const [activeGame, setActiveGame] = useState(false);
     const [cardsToWin, setCardsToWin] = useState([]);
-    const [player1CardInfo, setPlayer1CardInfo] = useState();
-    const [player2CardInfo, setPlayer2CardInfo] = useState();
+    const [player1CardInfo, setPlayer1CardInfo] = useState('');
+    const [player2CardInfo, setPlayer2CardInfo] = useState('');
+    const [warState, setWarState] = useState(false);
 
 
     const deck = [
@@ -35,6 +36,7 @@ const GameLogic = () => {
             alert('Player 1 has won the game!');
             setActiveGame(false);
         };
+
         if (player2Cards.length === 52) {
             alert('Player 2 has won the game!');
             setActiveGame(false);
@@ -61,12 +63,6 @@ const GameLogic = () => {
         dealCards(deck);
     };
 
-    useEffect(() => {
-        console.log('P1 CARDS:', 'COUNT:', player1Cards);
-        console.log('P2 CARDS:', 'COUNT:', player2Cards);
-
-    }, [dealCards, playRound]);
-
     function playRound(p1Card, p2Card) {
         p1Card = player1Cards.shift();
         p2Card = player2Cards.shift();
@@ -82,11 +78,11 @@ const GameLogic = () => {
         let currentCard1 = (parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
         let currentCard2 = (parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
 
-        setPlayer1CardInfo(cardIdentifier(cardsToWin[0]));
-        setPlayer2CardInfo(cardIdentifier(cardsToWin[1]));
+        setPlayer1CardInfo(cardIdentifier(cardsToWin[cardsToWin.length - 2]));
+        setPlayer2CardInfo(cardIdentifier(cardsToWin[cardsToWin.length - 1]));
 
         if (currentCard1 === currentCard2) {
-            alert('WAR!!');
+            setWarState(true);
             cardsToWin.push(player1Cards.shift());
             cardsToWin.push(player2Cards.shift());
 
@@ -95,7 +91,7 @@ const GameLogic = () => {
                 setActiveGame(false);
             };
 
-            if (player2Cards.length ===0) {
+            if (player2Cards.length === 0) {
                 alert('Player 1 Wins!');
                 setActiveGame(false);
             };
@@ -108,14 +104,13 @@ const GameLogic = () => {
             } else {
                 addToPlayersDeck(player2Cards, cardsToWin)
             };
+
             setCardsToWin([]);
+            setWarState(false);
         };
 
         checkWin(player1Cards, player2Cards);
     };
-
-
-
 
     return (
         <>
@@ -123,11 +118,11 @@ const GameLogic = () => {
             {activeGame && 
                 <div>
                     <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>
-                    <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo }} />
+                    <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState }} />
                 </div>}
         </>
     )
 
 }
 
-export default GameLogic;
+export default Game;
