@@ -2,23 +2,25 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const CardIdentifier = (card) => {
+const cardIdentifier = (card) => {
 
-    if (card.includes('H')) {
+    if (card.split('').includes('H')) {
         card = card.slice(1) + 'of Hearts';
     };
 
-    if (card.includes('D')) {
+    if (card.split('').includes('D')) {
         card = card.slice(1) + 'of Diamonds';
     };
 
-    if (card.includes('S')) {
+    if (card.split('').includes('S')) {
         card = card.slice(1) + 'of Spades';
     };
 
-    if (card.includes('C')) {
+    if (card.split('').includes('C')) {
         card = card.slice(1) + 'of Clubs';
     };
-}
 
-export default CardIdentifier;
+    return card;
+};
+
+export default cardIdentifier;

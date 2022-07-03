@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Tabletop from "./Tabletop";
+import cardIdentifier from "./CardIdentifier";
 
 const GameLogic = () => {
     const dispatch = useDispatch();
@@ -11,10 +12,8 @@ const GameLogic = () => {
     const [player2Cards, setPlayer2Cards] = useState([]);
     const [activeGame, setActiveGame] = useState(false);
     const [cardsToWin, setCardsToWin] = useState([]);
-    const [currentCard1, setCurrentCard1] = useState();
-    const [currentCard2, setCurrentCard2] = useState();
-    const [player1CardInfo, setPlayer1CardInfo] = useState('C4');
-    const [player2CardInfo, setPlayer2CardInfo] = useState('D1');
+    const [player1CardInfo, setPlayer1CardInfo] = useState();
+    const [player2CardInfo, setPlayer2CardInfo] = useState();
 
 
     const deck = [
@@ -80,11 +79,11 @@ const GameLogic = () => {
         console.log('NUMBER 1:', parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
         console.log('NUMBER 2:', parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
 
-        setCurrentCard1(parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
-        setCurrentCard2(parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
+        let currentCard1 = (parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
+        let currentCard2 = (parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
 
-        setPlayer1CardInfo(cardsToWin[cardsToWin.length - 2]);
-        setPlayer2CardInfo(cardsToWin[cardsToWin.length - 1]);
+        setPlayer1CardInfo(cardIdentifier(cardsToWin[0]));
+        setPlayer2CardInfo(cardIdentifier(cardsToWin[1]));
 
         if (currentCard1 === currentCard2) {
             alert('WAR!!');
