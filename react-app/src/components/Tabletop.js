@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import './Tabletop.css';
 
 const Tabletop = ({ gameState }) => {
 
-    console.log('TABLETOP PLAYER1CARD:', gameState.player1CardInfo)
-
-    useEffect(() => {
-        
-    }, [gameState]);
-
     return (
-        <>
-            This is the Tabletop component
-            <div>Player One Card Count: {gameState.player1Cards.length}</div>
-            <div>Player Two Card Count: {gameState.player2Cards.length}</div>
-            <div>Player One has played the {gameState.player1CardInfo}</div>
-            <div>Player Two has played the {gameState.player2CardInfo}</div>
-            {gameState.warState === true && <div>WAR!!</div>}
-        </>
-    )
-
-}
+        <div className='page-container'>
+            {gameState.warState && <div className='war-message'>WAR!!</div>}
+            {!gameState.warState && <div className='war-message'>Regular Play</div>}
+            <div className='players'>
+                <div className='player-box'>
+                    <div>Player One Card Count: {gameState.player1Cards.length}</div>
+                    <div>Card Played</div>
+                    <div> {gameState.player1CardInfo}</div>
+                </div>
+                <div className='player-box'>
+                    <div>Player Two Card Count: {gameState.player2Cards.length}</div>
+                    <div>Card Played</div>
+                    <div>{gameState.player2CardInfo}</div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default Tabletop;

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Tabletop from "./Tabletop";
 import cardIdentifier from "./CardIdentifier";
+import './Game.css';
 
 const Game = () => {
     const dispatch = useDispatch();
@@ -113,14 +114,14 @@ const Game = () => {
     };
 
     return (
-        <>
+        <div className='game-page-container'>
             {!activeGame && <button onClick={() => shuffle(deck)}>New Game</button>}
+            {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
             {activeGame && 
-                <div>
-                    <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>
-                    <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState }} />
+                <div className='game-info-container'>
+                    <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState, cardsToWin }} />
                 </div>}
-        </>
+        </div>
     )
 
 }
