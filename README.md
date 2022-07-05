@@ -38,10 +38,10 @@ To install and start using War! The Card Game, follow the instructions below:
 
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file. Use the following commands in your terminal:
    ```bash
-   A. psql - Enter psql command line
+   A. psql (Enter psql command line)
    B. CREATE USER <your-database-user> WITH PASSWORD '<your-user-password>';
-   C. CREATE DATABASE <your-database-name> WITH OWNER <your-database-user>
-   D. /q - Exit psql command line
+   C. CREATE DATABASE <your-database-name> WITH OWNER <your-database-user>;
+   D. /q (Exit psql command line)
    ```
 
 5. Enter your pipenv shell, migrate your database, seed your database, and run your flask app
