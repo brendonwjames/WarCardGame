@@ -2,7 +2,7 @@
 War! The Card Game is the beginning of a app designed for users to play card games, with the first game implemented being War. The current version of the application allows users to sign up for an account, play the card game War, and track wins against a computer player.
 
 ## Live Site
-Link to the (soon to be) live version of War! The Card Game, hosted by Heroku: [War! The Card Game](https://warthecardgame.herokuapp.com/)
+Link to the live version of War! The Card Game, hosted by Heroku: [War! The Card Game](https://warthecardgame.herokuapp.com/)
 
 ## Software
 War! The Card Game is a card game site built with the following software:
