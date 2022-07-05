@@ -25,6 +25,7 @@ function UsersList() {
   return (
     <div className='user-list-container'>
       <h1>All Players</h1>
+      <div className='message'>Click on a player to see their stats</div>
       <div>{userInfo}</div>
     </div>
   );

@@ -1,10 +1,7 @@
-.user-list-container {
+.user-page-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.message {
-    margin-bottom: 10px;
+    margin-top: 20px;
 }

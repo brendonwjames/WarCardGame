@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Tabletop from "./Tabletop";
 import cardIdentifier from "./CardIdentifier";
+import { updateWins } from "../store/session";
 import './Game.css';
 
 const Game = () => {
@@ -32,14 +32,35 @@ const Game = () => {
         setCardsToWin([]);
     };
 
+    function handleWin(email, username, wins, id) {
+        const editedWin = { username, email, wins };
+        dispatch(updateWins(id, editedWin));
+    };
+
     function checkWin(player1Cards, player2Cards) {
         if (player1Cards.length === 52) {
             alert('Player 1 has won the game!');
+            let email = player1.email;
+            let username = player1.username;
+            let wins = player1.wins;
+            let id = player1.id;
+            handleWin(email, username, wins, id);
             setActiveGame(false);
         };
 
         if (player2Cards.length === 52) {
-            alert('Player 2 has won the game!');
+            alert('The computer player has won the game!');
+
+            async function fetchComputer() {
+                const response = await fetch(`/api/users/1`);
+                const computer = await response.json();
+                return computer
+            };
+
+            fetchComputer().then(computer => {
+                handleWin(computer.email, computer.username, computer.wins, computer.id);
+            });
+
             setActiveGame(false);
         };
     };
@@ -48,9 +69,8 @@ const Game = () => {
         cardsToWin.map((card) => (
             playerDeck.push(card)
         ));
-
-        console.log('P1:', player1Cards);
-        console.log('P2:', player2Cards);
+        // console.log('P1:', player1Cards);
+        // console.log('P2:', player2Cards);
     };
 
     function shuffle(deck) {
@@ -59,8 +79,7 @@ const Game = () => {
             deck.push(deck.splice(Math.floor(Math.random() * count), 1)[0]);
             count -= 1;
         };
-        console.log('SHUFFLED:', deck);
-
+        // console.log('SHUFFLED:', deck);
         dealCards(deck);
     };
 
@@ -68,13 +87,13 @@ const Game = () => {
         p1Card = player1Cards.shift();
         p2Card = player2Cards.shift();
 
-        cardsToWin.push(p1Card); 
+        cardsToWin.push(p1Card);
         cardsToWin.push(p2Card);
 
-        console.log('CURRENT CARDS:', cardsToWin);
+        // console.log('CURRENT CARDS:', cardsToWin);
 
-        console.log('NUMBER 1:', parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
-        console.log('NUMBER 2:', parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
+        // console.log('NUMBER 1:', parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
+        // console.log('NUMBER 2:', parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
 
         let currentCard1 = (parseInt(cardsToWin[cardsToWin.length - 2].slice(1)));
         let currentCard2 = (parseInt(cardsToWin[cardsToWin.length - 1].slice(1)));
@@ -96,7 +115,7 @@ const Game = () => {
                 alert('Player 1 Wins!');
                 setActiveGame(false);
             };
-            console.log('WARCARDS TO WIN:', cardsToWin);
+            // console.log('WARCARDS TO WIN:', cardsToWin);
         };
 
         if (currentCard1 !== currentCard2) {
@@ -117,7 +136,7 @@ const Game = () => {
         <div className='game-page-container'>
             {!activeGame && <button onClick={() => shuffle(deck)}>New Game</button>}
             {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
-            {activeGame && 
+            {activeGame &&
                 <div className='game-info-container'>
                     <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState, cardsToWin }} />
                 </div>}
