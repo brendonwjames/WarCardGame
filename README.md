@@ -1,19 +1,50 @@
-# Flask React Project
+# War! The Card Game
+War! The Card Game is the beginning of a app designed for users to play card games, with the first game implemented being War!. The current version of the application allows users to sign up for an account, play the card game War!, and track wins against a computer player.
 
-This is the starter for the Flask React project.
+## Live Site
+Link to the (soon to be) live version of War! The Card Game, hosted by Heroku: [War! The Card Game](https://warthecardgame.herokuapp.com/)
 
-## Getting started
-1. Install dependencies
+## Software
+War! The Card Game is a card game site built with the following software:
+
+Backend - Python, Flask
+
+Frontend - React/Redux, Javascript
+
+Database - PostgresSQL
+
+Styling - HTML, CSS
+
+## Installation
+To install and start using War! The Card Game, follow the instructions below:
+
+1. Clone the repository from the main branch (link directly below)
+
+   ```bash
+   git clone https://github.com/brendonwjames/WarCardGame
+   ```
+
+2. CD into root of project and install project dependencies
 
       ```bash
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
       ```
 
-2. Create a **.env** file based on the example with proper settings for your
-   development environment
-3. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+3. Create a **.env** file in the root of your project and add the following lines into the file:
+   ```bash
+   SECRET_KEY=<your-secret-key-value>
+   DATABASE_URL=postgresql://<your-database-user>:<your-user-password>@localhost/<your-database-name>>
+   ```
 
-4. Get into your pipenv, migrate your database, seed your database, and run your flask app
+4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file. Use the following commands in your terminal:
+   ```bash
+   A. psql - Enter psql command line
+   B. CREATE USER <your-database-user> WITH PASSWORD '<your-user-password>';
+   C. CREATE DATABASE <your-database-name> WITH OWNER <your-database-user>
+   D. /q - Exit psql command line
+   ```
+
+5. Enter your pipenv shell, migrate your database, seed your database, and run your flask app
 
    ```bash
    pipenv shell
@@ -31,93 +62,24 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-5. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-
-
-*IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on alpine-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-### Dev Containers (OPTIONAL for M1 Users)
-The following instructions detail an *optional* development setup for M1 Mac users having issues with the `psycopg` package.
-
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
-3. Clone the repository (only this branch)
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
-6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
-
-   **Note:** This will take much less time on future starts because everything will be cached.
-
-7. Once everything is up, be sure to make a `.env` file based on `.env.example` in both the root directory and the *react-app* directory before running your app. You do not need a `DATABASE_URL` in the `.env` file if you are using this Docker setup for development - the URL is already set in the image (see `.devcontainer/Dockerfile` for the URL).
-
-8. Get into your pipenv, migrate your database, seed your database, and run your flask app
+6. Open up a second terminal, and cd into react-app directory. Use npm install to install required dependecies from package.json
 
    ```bash
-   pipenv shell
+   npm install
    ```
+   *Some users may need to run the following command, depending on the node version:
+   
+   ```bash
+   nvm use v16
+   ```
+
+7. Run the server using npm start in the second terminal. The default server runs on localhost:3000. Navigate to localhost:3000 in your browser (if it does not open automatically)
 
    ```bash
-   flask db upgrade
+   npm start
    ```
 
-   ```bash
-   flask seed all
-   ```
+8. Login to the site using the demo user, or sign up for you own account, and explore the site!
 
-   ```bash
-   flask run
-   ```
-
-9. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-<br>
-
-## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
-
-1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
-
-2. Create a new project on Heroku.
-
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres".
-
-4. Configure production environment variables. In your Heroku app settings -> config variables you should have two environment variables set:
-
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
-
-5. Generate a Heroku OAuth token for your Github Action. To do so, log in to Heroku via your command line with `heroku login`. Once you are logged in, run `heroku authorizations:create`. Copy the GUID value for the Token key.
-
-6. In your Github Actions Secrets you should have two environment variables set. You can set these variables via your Github repository settings -> secrets -> actions. Click "New respository secret" to create
-each of the following variables:
-
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token (from step 6)|
-   | `HEROKU_APP_NAME` | Heroku app name    |
-
-7. Push to your `main` branch! This will trigger the Github Action to build your Docker image and deploy your application to the Heroku container registry. Please note that the Github Action will automatically upgrade your production database with `flask db upgrade`. However, it will *not* automatically seed your database. You must manually seed your production database if/when you so choose (see step 8).
-
-8. *Attention!* Please run this command *only if you wish to seed your production database*: `heroku run -a HEROKU_APP_NAME flask seed all`
-
-## Helpful commands
-|    Command            |    Purpose    |
-| -------------         | ------------- |
-| `pipenv shell`        | Open your terminal in the virtual environment and be able to run flask commands without a prefix |
-| `pipenv run`          | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands  |
-| `flask db upgrade`    | Check in with the database and run any needed migrations  |
-| `flask db downgrade`  | Check in with the database and revert any needed migrations  |
-| `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+## Future Implementations
+The current project was completed during a short sprint, with focus being on functionality of the card game War! and basic user authentication for the app. Though I was pleased with my start to the project, I have many additions in mind to improve the project. The first addition when I return to this project will be to incorporate images with the card values currently being displayed with text only. Using https://bicyclecards.com/how-to-play/war/ as the rules to follow, I found that they were slightly different than how I play the game, and would like to add functionality to the war state to give players the option to put additional cards face down. The file structure needs to be re-worked, as most helper functions were written in line as they were needed, as opposed to organized into a specific folder to be exported throughout the app. In terms of trade-offs, I focused on functionality, so efficiency of the functions and components could be improved. I built out the skeleton of the project with a future redux app in mind, working on implementing parts of the app using redux state management. The CSS is bare-bones at the moment, displaying the functionality with plenty of room for creativity down the road. With the current React skeleton, I intend to add additional stats to the players pages and flesh out database entries with additions such as total games played, losses, and games started. Adding a timer to the game board, as well as being able to select an opponent from the database are also in the pipeline.
