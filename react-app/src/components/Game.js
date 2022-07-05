@@ -12,6 +12,7 @@ const Game = () => {
     const [player1Cards, setPlayer1Cards] = useState([]);
     const [player2Cards, setPlayer2Cards] = useState([]);
     const [activeGame, setActiveGame] = useState(false);
+    const [playerHasWon, setPlayerHasWon] = useState('');
     const [cardsToWin, setCardsToWin] = useState([]);
     const [player1CardInfo, setPlayer1CardInfo] = useState('');
     const [player2CardInfo, setPlayer2CardInfo] = useState('');
@@ -121,8 +122,10 @@ const Game = () => {
         if (currentCard1 !== currentCard2) {
             if (currentCard1 > currentCard2) {
                 addToPlayersDeck(player1Cards, cardsToWin)
+                setPlayerHasWon(<div>{player1.username} has won {cardsToWin.length} cards</div>)
             } else {
                 addToPlayersDeck(player2Cards, cardsToWin)
+                setPlayerHasWon(<div>Computer has won {cardsToWin.length} cards</div>)
             };
 
             setCardsToWin([]);
@@ -134,8 +137,11 @@ const Game = () => {
 
     return (
         <div className='game-page-container'>
-            {!activeGame && <button onClick={() => shuffle(deck)}>New Game</button>}
-            {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
+            {!activeGame && <button onClick={() => shuffle(deck)}>Play Game</button>}
+            <div className='left-tabletop'>
+                {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
+                {activeGame && playerHasWon}
+            </div>
             {activeGame &&
                 <div className='game-info-container'>
                     <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState, cardsToWin }} />

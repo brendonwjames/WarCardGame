@@ -12,3 +12,10 @@
     /* justify-content: center; */
     /* align-items: center; */
 }
+
+.left-tabletop {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 200px;
+}

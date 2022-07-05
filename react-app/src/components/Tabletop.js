@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import './Tabletop.css';
 
 const Tabletop = ({ gameState }) => {
+    const player1 = useSelector(state => state.session.user);
 
     return (
         <div className='page-container'>
@@ -9,12 +11,14 @@ const Tabletop = ({ gameState }) => {
             {!gameState.warState && <div className='war-message'>Regular Play</div>}
             <div className='players'>
                 <div className='player-box'>
-                    <div>Player One Card Count: {gameState.player1Cards.length}</div>
+                    <div>{player1.username} Card Count</div>
+                    <div>{gameState.player1Cards.length}</div>
                     <div>Card Played</div>
                     <div> {gameState.player1CardInfo}</div>
                 </div>
                 <div className='player-box'>
-                    <div>Player Two Card Count: {gameState.player2Cards.length}</div>
+                    <div>Computer Player Card Count</div>
+                    <div>{gameState.player2Cards.length}</div>
                     <div>Card Played</div>
                     <div>{gameState.player2CardInfo}</div>
                 </div>
