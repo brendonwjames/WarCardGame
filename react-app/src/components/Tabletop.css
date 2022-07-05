@@ -1,0 +1,28 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    justify-content: space-around;
+    height: 400px;
+    width: 400px;
+}
+
+.players {
+    display: flex;
+    justify-content: space-around;
+}
+
+.player-box {
+    display: flex;
+    flex-direction: column;
+    border: solid black 3px;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.war-message {
+    margin: 5px;
+}

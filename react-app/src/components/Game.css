@@ -1,0 +1,21 @@
+.game-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.game-info-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.left-tabletop {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 200px;
+}

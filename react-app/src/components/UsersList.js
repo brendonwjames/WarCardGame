@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './UsersList.css';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -13,20 +14,21 @@ function UsersList() {
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
+  const userInfo = users.map((user) => {
     return (
-      <li key={user.id}>
+      <div key={user.id} className='user-list'>
         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
+      </div>
     );
   });
 
   return (
-    <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
-    </>
+    <div className='user-list-container'>
+      <h1>All Players</h1>
+      <div className='message'>Click on a player to see their stats</div>
+      <div>{userInfo}</div>
+    </div>
   );
-}
+};
 
 export default UsersList;
