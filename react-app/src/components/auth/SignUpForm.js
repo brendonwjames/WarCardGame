@@ -16,12 +16,10 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, wins));
       if (data) {
-        setErrors(data)
-      }
-    }
+        setErrors(data);
+      };
   };
 
   const updateUsername = (e) => {
@@ -55,7 +53,7 @@ const SignUpForm = () => {
         <div className='input-info'>
           <label>User Name</label>
           <input
-            id='input'
+            className='input'
             type='text'
             name='username'
             onChange={updateUsername}
@@ -65,7 +63,7 @@ const SignUpForm = () => {
         <div className='input-info'>
           <label>Email</label>
           <input
-            id='input'
+            className='input'
             type='text'
             name='email'
             onChange={updateEmail}
@@ -75,7 +73,7 @@ const SignUpForm = () => {
         <div className='input-info'>
           <label>Password</label>
           <input
-            id='input'
+            className='input'
             type='password'
             name='password'
             onChange={updatePassword}
@@ -85,7 +83,7 @@ const SignUpForm = () => {
         <div className='input-info'>
           <label>Repeat Password</label>
           <input
-            id='input'
+            className='input'
             type='password'
             name='repeat_password'
             onChange={updateRepeatPassword}

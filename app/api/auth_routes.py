@@ -26,7 +26,7 @@ def authenticate():
 @auth_routes.route('/login', methods=['POST'])
 def login():
     form = LoginForm()
-    # Get the csrf_token from the request cookie and put it into the
+    # Get the csrf_token from the request cookie and put it into the 
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -48,6 +48,7 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print('is it validating')
         user = User(
             username=form.data['username'],
             email=form.data['email'],
