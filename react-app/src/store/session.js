@@ -84,9 +84,9 @@ export const login = (email, password) => async (dispatch) => {
     }
   } else {
     return ['An error occurred. Please try again.']
-  }
+  };
 
-}
+};
 
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
@@ -97,7 +97,7 @@ export const logout = () => async (dispatch) => {
 
   if (response.ok) {
     dispatch(removeUser());
-  }
+  };
 };
 
 
@@ -126,8 +126,8 @@ export const signUp = (username, email, password, wins) => async (dispatch) => {
     }
   } else {
     return ['An error occurred. Please try again.']
-  }
-}
+  };
+};
 
 
 
@@ -141,5 +141,5 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     default:
       return state;
-  }
-}
+  };
+};
