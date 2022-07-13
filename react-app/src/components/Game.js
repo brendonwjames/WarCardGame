@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Tabletop from "./Tabletop";
-import cardIdentifier from "./CardIdentifier";
 import { updateWins } from "../store/session";
+import { cardIdentifier } from "./HelperFunctions";
 import './Game.css';
 
 const Game = () => {
