@@ -3,15 +3,16 @@
 export const cardIdentifier = (card) => {
     let suit;
     let playerImage = document.createElement('img');
-    let opponentImage = document.createElement('img');
 
     // 	img.src = ("img/cards/" + playerHand[0] + ".png");
 // 	img2.src = ("img/cards/" + compHand[0] + ".png");
 
     if (card.split('').includes('H')) {
         suit = ' of Hearts';
-        playerImage.src = ('../../public/images/cards/Heart.jpg');
-        
+        // playerImage.src = ('../../public/images/cards/Heart.jpg');
+        // console.log(playerImage.src);
+        // let src = document.getElementById('img')
+        // src.appendChild(playerImage);
     }
 
     if (card.split('').includes('D')) {
