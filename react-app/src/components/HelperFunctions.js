@@ -10,7 +10,7 @@ export const cardIdentifier = (card) => {
 // 	img2.src = ("img/cards/" + compHand[0] + ".png");
 
     if (card.split('').includes('H')) {
-        suit = ' of Hearts';
+        suit = 'Heart';
         // playerImage.src = ();
         // // console.log(playerImage.src);
         // let src = document.getElementById('img')
@@ -18,15 +18,15 @@ export const cardIdentifier = (card) => {
     }
 
     if (card.split('').includes('D')) {
-        suit = ' of Diamonds';
+        suit = 'Diamond';
     }
 
     if (card.split('').includes('S')) {
-        suit = ' of Spades';
+        suit = 'Spade';
     }
 
     if (card.split('').includes('C')) {
-        suit = ' of Clubs';
+        suit = 'Club';
     }
 
     if (parseInt(card.slice(1)) === 11) {
@@ -49,15 +49,6 @@ export const cardIdentifier = (card) => {
         card = parseInt(card.slice(1).toString())
     };
 
-    return card + suit;
+    // return card + suit;
+    return suit
 };
-
-// var img = document.createElement('img');
-// 	var img2 = document.createElement('img');
-
-// 	img.src = ("img/cards/" + playerHand[0] + ".png");
-// 	img2.src = ("img/cards/" + compHand[0] + ".png");
-
-// 	//adds card image to the card slot of the game board
-// 	$('.playerCard').append(img).animateCss("flipInYRev");
-// 	$('.compCard').append(img2).animateCss("flipInY");
