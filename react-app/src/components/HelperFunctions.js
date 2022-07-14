@@ -1,4 +1,6 @@
 //eventual location of helper functions to export throughout the app
+const Heart = require('./images/cards/Heart.jpg');
+
 
 export const cardIdentifier = (card) => {
     let suit;
@@ -9,8 +11,8 @@ export const cardIdentifier = (card) => {
 
     if (card.split('').includes('H')) {
         suit = ' of Hearts';
-        // playerImage.src = ('../../public/images/cards/Heart.jpg');
-        // console.log(playerImage.src);
+        // playerImage.src = ();
+        // // console.log(playerImage.src);
         // let src = document.getElementById('img')
         // src.appendChild(playerImage);
     }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Card from "./Card";
 import './Tabletop.css';
 
 const Tabletop = ({ gameState }) => {
@@ -23,6 +24,7 @@ const Tabletop = ({ gameState }) => {
                     <div>{gameState.player2CardInfo}</div>
                 </div>
             </div>
+            <Card gameState={gameState}/>
         </div>
     );
 };
