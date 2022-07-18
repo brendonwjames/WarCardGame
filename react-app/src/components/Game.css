@@ -19,3 +19,12 @@
     margin: 10px;
     width: 200px;
 }
+
+.card-container {
+    border: solid black 2px;
+}
+
+.player-card-image {
+    height: 40px;
+    width: 40px;
+}

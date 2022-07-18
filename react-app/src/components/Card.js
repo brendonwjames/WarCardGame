@@ -47,8 +47,8 @@ const Card = ({ gameState }) => {
         return (
             <div>
                 <div className="card-container">This is the card container</div>
-                {gameState.player1CardInfo && <img src={getCardSymbol(gameState.player1CardInfo)} alt='broken'></img>}
-                {gameState.player2CardInfo && <img src={getCardSymbol(gameState.player2CardInfo)} alt='broken'></img>}
+                {gameState.player1CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player1CardInfo)} alt='broken'></img>}
+                {gameState.player2CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player2CardInfo)} alt='broken'></img>}
             </div>
         );
     };
