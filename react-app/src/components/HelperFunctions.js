@@ -4,17 +4,11 @@ const Heart = require('./images/cards/Heart.jpg');
 
 export const cardIdentifier = (card) => {
     let suit;
-    let playerImage = document.createElement('img');
 
-    // 	img.src = ("img/cards/" + playerHand[0] + ".png");
-// 	img2.src = ("img/cards/" + compHand[0] + ".png");
+    console.log('card identifier', card)
 
     if (card.split('').includes('H')) {
         suit = 'Heart';
-        // playerImage.src = ();
-        // // console.log(playerImage.src);
-        // let src = document.getElementById('img')
-        // src.appendChild(playerImage);
     }
 
     if (card.split('').includes('D')) {
@@ -49,6 +43,5 @@ export const cardIdentifier = (card) => {
         card = parseInt(card.slice(1).toString())
     };
 
-    // return card + suit;
-    return suit
+    return [suit, card]
 };
