@@ -5,10 +5,9 @@ import heart from "../components/images/cards/Heart.jpg";
 import diamond from '../components/images/cards/Diamond.jpg';
 import club from '../components/images/cards/Club.jpg';
 import spade from '../components/images/cards/Spade.jpg';
+import './Card.css';
 
 const Card = ({ gameState }) => {
-
-    // console.log(gameState, 'from the card component')
 
     const getCardSymbol = (suits) => {
         let symbol;
@@ -27,10 +26,13 @@ const Card = ({ gameState }) => {
     };
 
     return (
-        <div>
-            <div className="card-container">This is the card container</div>
-            {gameState.player1CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player1CardInfo[0])} alt='broken'></img>}
-            {gameState.player2CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player2CardInfo[0])} alt='broken'></img>}
+        <div className='player-cards-container'>
+            <div className='individual-card'>
+                {gameState.player1CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player1CardInfo[0])} alt='broken'></img>}
+            </div>
+            <div className='individual-card'>
+                {gameState.player2CardInfo && <img className='player-card-image' src={getCardSymbol(gameState.player2CardInfo[0])} alt='broken'></img>}
+            </div>
         </div>
     );
 };
