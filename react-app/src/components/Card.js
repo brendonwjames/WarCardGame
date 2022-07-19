@@ -24,15 +24,15 @@ const Card = ({ gameState }) => {
         };
     };
 
-    const imgState = !gameState.player1CardInfo.length ? 'card-back' : 'player-card-image'
+    const imgState = gameState.player1CardInfo.length ? 'player-card-image' : 'card-back'
 
     return (
         <div className='player-cards-container'>
             <div className='individual-card'>
-                {<img className={imgState} src={getCardSymbol(gameState.player1CardInfo[0])} alt='broken'></img>}
+                {<img className={imgState} src={getCardSymbol(gameState.player1CardInfo[0])} alt={background}></img>}
             </div>
             <div className='individual-card'>
-                {<img className={imgState} src={getCardSymbol(gameState.player2CardInfo[0])} alt='broken'></img>}
+                {<img className={imgState} src={getCardSymbol(gameState.player2CardInfo[0])} alt={background}></img>}
             </div>
         </div>
     );
