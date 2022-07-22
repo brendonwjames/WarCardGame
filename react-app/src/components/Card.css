@@ -7,7 +7,8 @@
     border-radius: 5px 5px 0 0;
     margin: 10px;
     position: relative;
-    top: 140px
+    top: 15px;
+    left: 65px
 }
 
 .individual-card:hover {
@@ -40,4 +41,11 @@
 
 .card-back:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
 }

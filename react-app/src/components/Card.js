@@ -32,10 +32,12 @@ const Card = ({ gameState }) => {
         <div className='player-cards-container'>
             <div className='individual-card'>
                 {<img className={imgState} src={getCardSymbol(gameState.player1CardInfo[0])} alt={background}></img>}
+                {gameState.player1CardInfo && <div className='card-number'>{gameState.player1CardInfo[1]}</div>}
                 {gameState.player1CardInfo && <img className='bottom-card-image' src={getCardSymbol(gameState.player1CardInfo[0])} alt={background}></img>}
             </div>
             <div className='individual-card'>
                 {<img className={imgState} src={getCardSymbol(gameState.player2CardInfo[0])} alt={background}></img>}
+                {gameState.player2CardInfo && <div className='card-number'>{gameState.player2CardInfo[1]}</div>}
                 {gameState.player2CardInfo && <img className='bottom-card-image' src={getCardSymbol(gameState.player2CardInfo[0])} alt={background}></img>}
             </div>
         </div>
