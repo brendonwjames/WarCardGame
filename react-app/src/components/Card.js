@@ -8,6 +8,8 @@ import './Card.css';
 
 const Card = ({ gameState }) => {
 
+    console.log('card gamestate', gameState)
+
     const getCardSymbol = (suits) => {
         let symbol = background;
         switch (suits) {

@@ -15,13 +15,13 @@ const Tabletop = ({ gameState }) => {
                     <div>{player1.username} Card Count</div>
                     <div>{gameState.player1Cards.length}</div>
                     <div>Card Played</div>
-                    <div> {gameState.player1CardInfo}</div>
+                    {gameState.player1CardInfo && <div>{gameState.player1CardInfo[1]} of {gameState.player1CardInfo[0]}s</div>}
                 </div>
                 <div className='player-box'>
                     <div>Computer Player Card Count</div>
                     <div>{gameState.player2Cards.length}</div>
                     <div>Card Played</div>
-                    <div>{gameState.player2CardInfo}</div>
+                    {gameState.player2CardInfo && <div>{gameState.player2CardInfo[1]} of {gameState.player2CardInfo[0]}s</div>}
                 </div>
             </div>
             <Card gameState={gameState}/>
