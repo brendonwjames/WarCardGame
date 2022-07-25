@@ -137,6 +137,7 @@ const Game = () => {
 
     return (
         <div className='game-page-container'>
+            <img src="./images/cards/SiteBackground.jpeg" id="bg" alt=""></img>
             <div className='left-tabletop'>
                 {activeGame && playerHasWon}
             </div>
@@ -148,7 +149,6 @@ const Game = () => {
                 {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
         </div>
     )
-
 }
 
 export default Game;
