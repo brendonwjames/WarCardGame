@@ -137,15 +137,15 @@ const Game = () => {
 
     return (
         <div className='game-page-container'>
-            {!activeGame && <button onClick={() => shuffle(deck)}>Play Game</button>}
             <div className='left-tabletop'>
-                {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
                 {activeGame && playerHasWon}
             </div>
             {activeGame &&
                 <div className='game-info-container'>
                     <Tabletop gameState={{ player1Cards, player2Cards, player1CardInfo, player2CardInfo, warState, cardsToWin }} />
                 </div>}
+                {!activeGame && <button onClick={() => shuffle(deck)}>Play Game</button>}
+                {activeGame && <button onClick={() => playRound(player1Cards, player2Cards)}>Play Round</button>}
         </div>
     )
 

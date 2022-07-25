@@ -25,3 +25,8 @@
 .war-message {
     margin: 5px;
 }
+
+.player-card-counters {
+    display: flex;
+    justify-content: space-around;
+}
