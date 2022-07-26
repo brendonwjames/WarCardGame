@@ -9,22 +9,24 @@ const NavBar = () => {
   const loggedInUser = useSelector(state => state.session.user);
 
   return (
-    <nav className='nav-buttons'>
-          {loggedInUser && <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>}
-          {!loggedInUser && <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>}
-          {!loggedInUser && <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>}
-          {loggedInUser && <div>Welcome, {loggedInUser.username}</div>}
-          {loggedInUser && <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>}
-          {loggedInUser && <LogoutButton />}
-    </nav>
+    <div className='nav-bar-container'>
+      <nav className='nav-buttons'>
+        {loggedInUser && <div className='nav-button'>Welcome, {loggedInUser.username}</div>}
+        {loggedInUser && <NavLink className='nav-button' to='/' exact={true} activeClassName='active'>
+          Home
+        </NavLink>}
+        {!loggedInUser && <NavLink className='nav-button' to='/login' exact={true} activeClassName='active'>
+          Login
+        </NavLink>}
+        {!loggedInUser && <NavLink className='nav-button' to='/sign-up' exact={true} activeClassName='active'>
+          Sign Up
+        </NavLink>}
+        {loggedInUser && <NavLink className='nav-button' to='/users' exact={true} activeClassName='active'>
+          Users
+        </NavLink>}
+        {loggedInUser && <LogoutButton className='nav-button'/>}
+      </nav>
+    </div>
   );
 }
 
