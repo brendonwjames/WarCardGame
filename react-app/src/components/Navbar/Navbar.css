@@ -1,25 +1,28 @@
-.nav-buttons {
+.nav-buttons-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border: solid black 2px;
     border-radius: 10px;
-    margin: 10px;
     height: 20vw;
-    height: 90%
-}
-
-.nav-button {
-    margin: 5px;
 }
 
 .nav-bar-container {
-    height: 50%;
+    height: auto;
     width: 150px;
     position: fixed;
-    top: 12.5%;
-    background-color: rgb(248, 242, 242);
+    top: 25%;
+    background-color: rgb(8, 141, 242);
     overflow-x: hidden; /* Disable horizontal scroll */
     border-radius: 10px;
+}
+
+.nav-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
 }

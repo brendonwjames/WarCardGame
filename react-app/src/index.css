@@ -1,8 +1,5 @@
 /* TODO Add site wide styles */
 
 html {
-    /* background: url('./components/images/cards/SiteBackground.jpeg') no-repeat center center fixed;
-    background-size: 50% auto;
-    height: 100%;
-    overflow: hidden; */
+    background-color: rgb(55, 68, 82);
 }

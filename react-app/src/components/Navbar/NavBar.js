@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import './Navbar.css';
 
@@ -10,10 +10,10 @@ const NavBar = () => {
 
   return (
     <div className='nav-bar-container'>
-      <nav className='nav-buttons'>
+      <nav className='nav-buttons-container'>
         {loggedInUser && <div className='nav-button'>Welcome, {loggedInUser.username}</div>}
         {loggedInUser && <NavLink className='nav-button' to='/' exact={true} activeClassName='active'>
-          Home
+          <button>Home</button>
         </NavLink>}
         {!loggedInUser && <NavLink className='nav-button' to='/login' exact={true} activeClassName='active'>
           Login
@@ -24,7 +24,7 @@ const NavBar = () => {
         {loggedInUser && <NavLink className='nav-button' to='/users' exact={true} activeClassName='active'>
           Users
         </NavLink>}
-        {loggedInUser && <LogoutButton className='nav-button'/>}
+        {loggedInUser && <LogoutButton className='nav-button' />}
       </nav>
     </div>
   );
