@@ -5,8 +5,9 @@
     align-items: center;
     border: solid black 2px;
     border-radius: 10px;
-    margin: 15px;
+    margin: 10px;
     height: 20vw;
+    height: 90%
 }
 
 .nav-button {
@@ -18,7 +19,8 @@
     width: 150px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     /* left: 0; */
-    top: 25%;
+    top: 12.5%;
     background-color: rgb(248, 242, 242); /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
+    border-radius: 10px;
 }
