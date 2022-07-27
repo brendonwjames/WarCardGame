@@ -1,9 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
-const GenericButton = () => {
+const GenericButton = (props) => {
 
     return (
-        <button>Generic Button</button>
+        <button>GenericButton</button>
     )
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
+import GenericButton from '../GenericButton';
 import './Navbar.css';
 
 const NavBar = () => {
@@ -25,6 +26,9 @@ const NavBar = () => {
           Users
         </NavLink>}
         {loggedInUser && <LogoutButton className='nav-button' />}
+        <GenericButton />
+        <GenericButton />
+        <GenericButton />
       </nav>
     </div>
   );
