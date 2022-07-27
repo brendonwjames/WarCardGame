@@ -11,14 +11,14 @@ const NavBar = () => {
 
   return (
     <div className='nav-bar-container'>
-      <nav className='nav-buttons-container'>
+      <div className='nav-buttons-container'>
         {loggedInUser && <div className='welcome-message'>{loggedInUser.username}</div>}
         {loggedInUser && <NavButton className='nav-bar-button' buttonName='Home' path='/' />}
         {!loggedInUser && <NavButton className='nav-bar-button' buttonName='Login' path='/login'/>}
         {!loggedInUser && <NavButton className='nav-bar-button' buttonName='Sign Up' path='/sign-up'/>}
         {loggedInUser && <NavButton className='nav-bar-button' buttonName='Users' path='/users'/>}
-        {loggedInUser && <LogoutButton className='nav-button' />}
-      </nav>
+        {loggedInUser && <LogoutButton className='nav-bar-button' />}
+      </div>
     </div>
   );
 }

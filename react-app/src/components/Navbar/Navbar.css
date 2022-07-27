@@ -13,12 +13,26 @@
     position: fixed;
     top: 25%;
     background-color: rgb(8, 141, 242);
-    border-radius: 10px;
+    border-radius: 3px;
     border: solid black 2px;
 }
 
 .welcome-message {
-    padding: 5px;
+    margin: 5px;
     border-bottom: solid rgba(55, 68, 82, .3) 2px;
     font-style: italic;
+}
+
+.nav-bar-button {
+    width: 125px;
+    height: 40px;
+    /* border: solid 1px (8, 141, 242); */
+    border-radius: 5px;
+    background-color: rgb(8, 141, 242);
+    color: white;
+}
+
+.nav-bar-button:hover {
+    background-color: rgb(80, 160, 225);
+    font-size: 1em;
 }
