@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <div className='nav-bar-container'>
       <nav className='nav-buttons-container'>
-        {loggedInUser && <div className='nav-button'>Welcome, {loggedInUser.username}</div>}
+        {loggedInUser && <div className='welcome-message'>{loggedInUser.username}</div>}
         {loggedInUser && <NavButton className='nav-bar-button' buttonName='Home' path='/' />}
         {!loggedInUser && <NavButton className='nav-bar-button' buttonName='Login' path='/login'/>}
         {!loggedInUser && <NavButton className='nav-bar-button' buttonName='Sign Up' path='/sign-up'/>}

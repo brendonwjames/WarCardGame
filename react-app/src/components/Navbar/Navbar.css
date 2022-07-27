@@ -3,35 +3,22 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: solid black 2px;
     border-radius: 10px;
-    height: 20vw;
+    height: 150px;
 }
 
 .nav-bar-container {
-    height: auto;
-    width: 150px;
+    height: 150px;
+    width: 125px;
     position: fixed;
     top: 25%;
     background-color: rgb(8, 141, 242);
-    overflow-x: hidden; /* Disable horizontal scroll */
     border-radius: 10px;
+    border: solid black 2px;
 }
 
-.nav-button {
-    width: 100px;
-    background-color: rgba(0,149,246,.3);
-    color: black;
-    border: none;
-    border-radius: 3px;
+.welcome-message {
     padding: 5px;
-}
-
-.nav-bar-button {
-    width: 100px;
-    background-color: rgba(0,149,246,.3);
-    color: black;
-    border: solid black 3px;
-    border-radius: 3px;
-    padding: 5px;
+    border-bottom: solid rgba(55, 68, 82, .3) 2px;
+    font-style: italic;
 }
