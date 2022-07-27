@@ -26,3 +26,12 @@
     border-radius: 3px;
     padding: 5px;
 }
+
+.nav-bar-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: solid black 3px;
+    border-radius: 3px;
+    padding: 5px;
+}
